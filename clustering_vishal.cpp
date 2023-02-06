@@ -16,11 +16,79 @@
   %                     3) Enter the edges in edges_t edges[] in line 139.
   */
 
+//****************************Template Begins****************************//
+// Header Files
 #include<iostream>
-#include<fstream>
-#include<set>
+#include <filesystem>
+#include<iomanip>
+#include<algorithm>
+#include<vector>
 #include<utility>
+#include<set>
+#include<unordered_set>
+#include<list>
+#include<iterator>
+#include<deque>
 #include<queue>
+#include<stack>
+#include<set>
+#include<bitset>
+#include<thread>
+#include<tuple>
+#include<random>
+#include<map>
+#include<unordered_map>
+#include<stdio.h>
+#include<complex>
+#include<math.h>
+#include<cstring>
+#include <fstream>
+#include <climits>
+#include<chrono>
+#include<string>
+#include "ext/pb_ds/assoc_container.hpp"
+#include "ext/pb_ds/tree_policy.hpp"
+// Header Files End
+ 
+using namespace std;
+using namespace __gnu_pbds;
+// find_by_order(k)  returns iterator to kth element starting from 0;
+// order_of_key(k) returns count of elements strictly smaller than k;
+template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update> ;
+ 
+template<class key, class value, class cmp = std::less<key>> using ordered_map = tree<key, value, cmp, rb_tree_tag, tree_order_statistics_node_update>;
+
+#define FASTIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define endl "\n"
+#define ll long long
+#define ULL unsigned long long
+#define umap unordered_map
+#define uset unordered_set
+#define lb lower_bound
+#define ub upper_bound
+#define ts(num) to_string(num)
+#define fo(i,a,b) for(int i=a;i<=b;i++)
+#define all(v) (v).begin(),(v).end()
+#define all1(v) (v).begin()+1,(v).end()
+#define allr(v) (v).rbegin(),(v).rend()
+#define allr1(v) (v).rbegin()+1,(v).rend()
+#define sort0(v) sort(all(v))
+#define bpcnt(x) __builtin_popcount(x)      // count the number of set bits
+#define bpcntll(x) __builtin_popcount(x)
+#define bpar(x) __builtin_parity(x)         // returns true(1) if the number has odd parity
+#define bparll(x) __builtin_parity(x)
+#define bclz(x) __builtin_clz(x)            // count the leading zero of the integer (before set bit)
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+#define sz(x) (ll)x.size()
+#define pb push_back
+#define ppb pop_back
+#define mkp make_pair
+#define inf 1000000000000000005
+const ll M = 1e9 + 7;
+const int N = 1e5 + 100;
 
 #define all(a)  a.begin(),a.end()
 #define newl cout<<"\n"
