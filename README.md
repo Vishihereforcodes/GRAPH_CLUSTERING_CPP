@@ -11,7 +11,7 @@ We want to find lower bounds on the bonding number. We followed a simple strateg
 4. Output d + 1 as a lower bound on τ (G).
 
 As we can see, a major part of the solution demanded clustering the graph. 
-I implemented the Girvan-Newman graph clustering algorithm from scratch. (code: clustering_shivam.cpp) 
+I implemented the Girvan-Newman graph clustering algorithm from scratch. (code: clustering_vishal.cpp) 
 
 **Girvan-Newman graph clustering algorithm:** <br />      
 The algorithm uses the Quality function(Q) by Girvan-Newman to implement the clustering.      
