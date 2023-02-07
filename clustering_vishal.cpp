@@ -16,7 +16,7 @@
   %                     3) Enter the edges in edges_t edges[] in line 139.
   */
 
-//****************************Template Begins****************************//
+//***************************************** Template Begins ********************************************//
 // Header Files
 #include<iostream>
 #include <filesystem>
@@ -83,6 +83,9 @@ typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef pair<ll, ll> pll;
 #define sz(x) (ll)x.size()
+#define all(a)  a.begin(),a.end()
+#define newl cout<<"\n"
+#define space cout<<" "
 #define pb push_back
 #define ppb pop_back
 #define mkp make_pair
@@ -90,12 +93,32 @@ typedef pair<ll, ll> pll;
 const ll M = 1e9 + 7;
 const int N = 1e5 + 100;
 
-#define all(a)  a.begin(),a.end()
-#define newl cout<<"\n"
-#define space cout<<" "
+ll inv(ll i) {if (i == 1) return 1; return (M - ((M / i) * inv(M % i)) % M) % M;}
+ 
+ll mod_mul(ll a, ll b) {a = a % M; b = b % M; return (((a * b) % M) + M) % M;}
+ 
+ll mod_add(ll a, ll b) {a = a % M; b = b % M; return (((a + b) % M) + M) % M;}
+ 
+ll gcd(ll a, ll b) { if (b == 0) return a; return gcd(b, a % b);}
+ 
+ll ceil_div(ll a, ll b) {return a % b == 0 ? a / b : a / b + 1;}
+ 
+ll pwr(ll a, ll b) {a %= M; ll res = 1; while (b > 0) {if (b & 1) res = res * a % M; a = a * a % M; b >>= 1;} return res;}
+//****************************Template Ends*******************************//
 
-using namespace std;
-
+//------------------------------------------------------------------------------------------------------------------------------------------//
+// Sieve Eranthoses for Prime. Time Complexity : O(N * log(log(N)))
+vector<bool> isPrime(1e6 + 7, true);
+void seive(){
+    isPrime[0] = isPrime[1] = false;
+    for(int i = 2; i * i <= 1e6 + 7; ++i){
+        if(isPrime[i]){
+            for(int j = i * i; j <= 1e6 + 7; j += i)
+                isPrime[j] = false;
+        }
+    }
+}
+//----------------------------------------------** CLUSTERING OF GRAPH - CPP CODE **---------------------------------------------------------//
 int m = 77, V = 34;
 
 typedef pair< int ,int > pii;
@@ -114,6 +137,7 @@ int cckcluster[10000], lccluster[10000], dccluster[10000], mindegree[10000];
 int cluster_size, vcount;
 int id[10000], no_of_edges[10000], dfschk[10000];
 
+//-----------------------------------------------------------------------------------------------------------------------//
 void dfs(int u){
     if(dfschk[u]) return;
     dfschk[u] = true;
@@ -121,7 +145,7 @@ void dfs(int u){
         dfs(*itrset);
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------//
 int conn_edges(int i,int j){
     int x, y, ctr = 0;
     for(itr3 = CLUSTER[i].begin(); itr3 != CLUSTER[i].end(); itr3++){
@@ -135,7 +159,7 @@ int conn_edges(int i,int j){
     }
     return ctr;
 }
-
+//------------------------------------------------------------------------------------------------------------------------//
 void merge_cluster(int i,int j) {
         int x, y;
         double temp;
@@ -172,7 +196,7 @@ void merge_cluster(int i,int j) {
         cckcluster[i] = 0;                // i is not a cluster now
         cckcluster[cluster_size] = 1;     // new cluster is marked
 }
-
+//---------------------------------------------------------------------------------------------------------------------//
 double update_quality(){
     double quality = 0.0;
     for(int i = 1;i <= V; ++i){
@@ -182,6 +206,8 @@ double update_quality(){
     }
     return quality;
 }
+
+//----------------------------------------------------------------------------------------------------------------------//
 
 int main() {
     int sz, x, y, i, j, k, maximum, rem;
@@ -304,3 +330,4 @@ int main() {
     cout << " \nNumber of Clusters = " << j; newl;
     cout << " Final Q = " << quality << "\n";
 }
+//--------------------------------------------------------** THE END **----------------------------------------------------------------//
